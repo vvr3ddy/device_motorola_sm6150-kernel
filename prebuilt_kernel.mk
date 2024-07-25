@@ -17,10 +17,14 @@ TARGET_PREBUILT_KERNEL := $(DEVICE_KERNEL_PATH)/kernel
 
 # Copy out modules
 PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,$(DEVICE_KERNEL_PATH)/modules/vendor/,$(TARGET_COPY_OUT_VENDOR)/lib/modules)
+    $(call find-copy-subdir-files,*,$(DEVICE_KERNEL_PATH)/modules/vendor/,recovery/root/vendor/lib/modules)
 
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(DEVICE_KERNEL_PATH)/modules/vendor_ramdisk/,$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules)
 
 PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,$(DEVICE_KERNEL_PATH)/firmware/,$(TARGET_COPY_OUT_VENDOR)/firmware)
+    $(call find-copy-subdir-files,*,$(DEVICE_KERNEL_PATH)/firmware/,recovery/root/vendor/firmware)
+
+PRODUCT_COPY_FILES += \
+    $(DEVICE_KERNEL_PATH)/scripts/touch_fix.sh:recovery/root/system/bin/touch_fix.sh
+
